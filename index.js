@@ -1,11 +1,11 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const { exit, allowedNodeEnvironmentFlags } = require('process');
+const { exit } = require('process');
 const db = require('./db');
 const consoleTable = require('console.table');
 
 console.table(
-    "\n------------- WELCOME-------------\n"
+    "\n------------- WELCOME TO EMPLOYEE TRACKER -------------\n"
 )
 
 // Series of inquirer prompts. Initial list of options. Based on answer send to function
