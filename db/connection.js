@@ -9,7 +9,7 @@ const db = mysql.createConnection(
         password: '',
         database: 'tracker'
     },
-    console.log('Connected to the election database.')
+    console.log('Connected to the tracker database.')
 );
 
 connection.connect(function(err) {

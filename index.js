@@ -1,11 +1,14 @@
-const inquirer = require('inquire');
+const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const { exit } = require('process');
+const { exit, allowedNodeEnvironmentFlags } = require('process');
 const db = require('./db');
+const consoleTable = require('console.table');
 
-require('console.table');
+console.table(
+    "\n------------- WELCOME-------------\n"
+)
 
-// series of inquirer prompts. list of questions. based on answer send to function
+// Series of inquirer prompts. Initial list of options. Based on answer send to function
 const init = function(){
     inquirer.prompt([
         {
@@ -16,9 +19,10 @@ const init = function(){
                 'View Departments',
                 'View Employyes',
                 'View Roles',
-                'Add Departments',
-                'Add Employees', 
-                'Add Roles',
+                'Add Department',
+                'Add Employee', 
+                'Add Role',
+                'Update Employee Role',
                 'Exit']
         }
     ])
@@ -27,9 +31,35 @@ const init = function(){
             case 'View Departments':
                 viewAllDepartments();
                 break;   
-                // insert the other options
-            default:
-                exit();        
+
+            case 'View Employees':
+                viewAllEmployees();
+                break;
+                
+            case 'View Roles':
+                viewAllRoles();
+                break;
+                
+            case 'Add Department':
+                addNewDepartment();
+                break;
+                
+            case 'Add Employee':
+                addNewEmployee();
+                break;
+                
+            case 'Add Role':
+                addNewRole();
+                break;  
+
+            case 'Update Employee Role':
+                updateEmployee();
+                break;
+                
+            case 'Exit':
+                process.exit();   
+            // default:
+            //     exit();        
         }
     })
 }
@@ -43,8 +73,8 @@ const viewAllDepartments = function(){
     })
 }
 
-const exit = function(){
-    process.exit();
-}
+// // const exit = function(){
+//     process.exit();
+// }
 
 init();
