@@ -12,12 +12,19 @@ const init = function(){
             type: 'list',
             name: 'directory',
             message: 'What would you like to do?',
-            choices: ['ViewAllDepartments','Exit']
+            choices: [
+                'View Departments',
+                'View Employyes',
+                'View Roles',
+                'Add Departments',
+                'Add Employees', 
+                'Add Roles',
+                'Exit']
         }
     ])
     .then((data) => {
         switch(data.directory){
-            case 'ViewAllDepartments':
+            case 'View Departments':
                 viewAllDepartments();
                 break;   
                 // insert the other options
