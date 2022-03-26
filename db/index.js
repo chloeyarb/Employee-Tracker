@@ -1,7 +1,7 @@
 // Put all of our Queries
 const connection = require('./connection');
 
-// Creating class
+// Creating class. Module 10
 
 class DB {
     constructor(connection){
@@ -9,9 +9,21 @@ class DB {
     }
     findDepartments(){
         return this.connection.promise().query(
-            'SELECT * FROM deparment'
+            'SELECT * FROM department'
+        )
+    }
+    findEmployees(){
+        return this.connection.promise().query(
+            'SELECT * FROM employee'
+        )
+    }
+    findRoles(){
+        return this.connection.promise().query(
+            'SELECT * FROM role'
         )
     }
 }
+
+// Adds need parameters 
 
 module.exports=new DB(connection);

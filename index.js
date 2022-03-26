@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const { exit } = require('process');
 const db = require('./db');
 const consoleTable = require('console.table');
 
@@ -8,7 +7,7 @@ console.table(
     "\n------------- WELCOME TO EMPLOYEE TRACKER -------------\n"
 )
 
-// Series of inquirer prompts. Initial list of options. Based on answer send to function
+// Series of inquirer prompts. Initial list of options for what user can do. Based on answer send to function
 const init = function(){
     inquirer.prompt([
         {
@@ -17,7 +16,7 @@ const init = function(){
             message: 'What would you like to do?',
             choices: [
                 'View Departments',
-                'View Employyes',
+                'View Employees',
                 'View Roles',
                 'Add Department',
                 'Add Employee', 
@@ -58,8 +57,9 @@ const init = function(){
                 
             case 'Exit':
                 process.exit();   
-            // default:
-            //     exit();        
+
+            default:
+                process.exit();        
         }
     })
 }
@@ -72,9 +72,21 @@ const viewAllDepartments = function(){
         init();
     })
 }
-
-// // const exit = function(){
-//     process.exit();
-// }
+const viewAllEmployees = function(){
+    db.findEmployees().then(([employee]) =>{
+        console.table(employee);
+    })
+    .then(() =>{
+        init();
+    })
+}
+const viewAllRoles = function(){
+    db.findRoles().then(([role]) =>{
+        console.table(role);
+    })
+    .then(() =>{
+        init();
+    })
+}
 
 init();
