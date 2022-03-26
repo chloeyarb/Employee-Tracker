@@ -88,5 +88,35 @@ const viewAllRoles = function(){
         init();
     })
 }
+const addNewDepartment = function(){
+    inquirer.prompt([
+        {
+            type:'input',
+            name: 'departmentName',
+            message: 'What is the name of the new department?',
+        }
+    ])
+    .then((answers) =>{
+        console.log(answers)
+        db.addDepartment(answers)
+        .then(init());
+    })
+    
+}
+const addNewEmployee = function(){
+    inquirer.prompt([
+        {
+            type:'input',
+            name: 'addEmployee',
+            message: 'What is the name of the new employee?',
+        }
+    ])
+    .then((answers) =>{
+        console.log(answers)
+        db.addDepartment(answers)
+        .then(init());
+    })
+    
+}
 
 init();

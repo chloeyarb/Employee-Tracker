@@ -22,6 +22,13 @@ class DB {
             'SELECT * FROM role'
         )
     }
+    addDepartment(answers){
+        return this.connection.promise().query(
+            'INSERT INTO department SET ?', {
+                name: answers.departmentName
+            } 
+        );
+    }
 }
 
 // Adds need parameters 
