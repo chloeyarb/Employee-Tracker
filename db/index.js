@@ -29,8 +29,18 @@ class DB {
             } 
         );
     }
-}
+    addNewEmployee(answers){
+        return this.connection.promise().query(
+            'INSERT INTO employee SET ?', {
+                first_name: answers.firstName,
+                last_name: answers.lastName, 
+                role_id: answers.employeeRoleId,
+                // manager_id: 'null'
+            } 
+        );
+    }
+} 
 
-// Adds need parameters 
+
 
 module.exports=new DB(connection);

@@ -107,16 +107,44 @@ const addNewEmployee = function(){
     inquirer.prompt([
         {
             type:'input',
-            name: 'addEmployee',
-            message: 'What is the name of the new employee?',
-        }
+            name: 'firstName',
+            message: 'What is the first name of the new employee?',
+        },
+        {
+            type:'input',
+            name: 'lastName',
+            message: 'What is the last name of the new employee?',
+        } 
     ])
-    .then((answers) =>{
-        console.log(answers)
-        db.addDepartment(answers)
+    .then( answers => {
+        const first = answers.first_name;
+        const last = answers.last_name;
+        
+        db.findRoles().then(([role]) =>{
+            const roles = role;
+            const listRoles = roles.map(({ id, title}) => ({
+                name: title,
+                value: id
+            }))
+            
+            inquirer.prompt([
+                {
+                    type:'list',
+                    name: 'employeeRoleId',
+                    message: 'What is the role of this employee?',
+                    choices: listRoles
+                    
+                }
+            ])
+            .then((answers) =>{
+                console.log(answers)
+                db.addNewEmployee(answers)
+                // .then(init());
+            })
+        })
+        db.addNewEmployee(answers)
         .then(init());
     })
-    
 }
 
 init();
