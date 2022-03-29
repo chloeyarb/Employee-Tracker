@@ -20,7 +20,7 @@ class DB {
     findRoles(){
         // do a left join
         return this.connection.promise().query(
-            'SELECT * FROM role'
+            'SELECT role.id, role.title, role.salary, department.name AS department FROM role LEFT JOIN department on role.department_id = department.id'
         )
     }
     addDepartment(answers){
