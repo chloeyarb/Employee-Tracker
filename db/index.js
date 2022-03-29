@@ -14,10 +14,11 @@ class DB {
     }
     findEmployees(){
         return this.connection.promise().query(
-            'SELECT * FROM employee'
+            'SELECT employee.id, employee.first_name, employee.last_name, role.title, role.salary, department.name AS department FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id'
         )
     }
     findRoles(){
+        // do a left join
         return this.connection.promise().query(
             'SELECT * FROM role'
         )
@@ -31,13 +32,14 @@ class DB {
     }
     addNewEmployee(answers){
         return this.connection.promise().query(
-            'INSERT INTO employee SET ?', {
-                first_name: answers.firstName,
-                last_name: answers.lastName, 
-                role_id: answers.employeeRoleId,
-                // manager_id: 'null'
-            } 
+            'INSERT INTO employee SET ?', answers 
         );
+    }
+    updateEmployeeRole(employeeId, roleId){
+        return this.connection.promise().query(
+            'UPDATE employee SET role_id = ? WHERE id = ?', 
+            [roleId, employeeId]
+        )
     }
 } 
 
