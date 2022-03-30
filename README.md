@@ -25,3 +25,4 @@ Chloe Yarborough
 [Backup Video Link](https://drive.google.com/file/d/1GHFP7-WNvebnHVftruAm0w1pG6M5nfnI/view)
 
 ## GitHub
+[GitHub URL](https://github.com/chloeyarb/Employee-Tracker)
