@@ -21,8 +21,8 @@ Please note a .gitignore was used for this project.
 Chloe Yarborough
 
 ## Video Walkthrough
-[YouTube Link](https://www.youtube.com/watch?v=EzV9XVhqdSc)
-[Backup Video Link](https://drive.google.com/file/d/1GHFP7-WNvebnHVftruAm0w1pG6M5nfnI/view)
+* [YouTube Link](https://www.youtube.com/watch?v=EzV9XVhqdSc)
+* [Backup Video Link](https://drive.google.com/file/d/1GHFP7-WNvebnHVftruAm0w1pG6M5nfnI/view)
 
 ## GitHub
 [GitHub URL](https://github.com/chloeyarb/Employee-Tracker)
